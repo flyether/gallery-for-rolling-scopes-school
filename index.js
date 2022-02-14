@@ -1,11 +1,7 @@
-
-  // const url = "https://api.unsplash.com/search/photos?query=spring&per_page=30&orientation=landscape&client_id=No7MKm_oO2eQLte1bRDe8U-iqpBeob1dCmwvyZyHCTs"
-  
-  const formSubmit = document.querySelector('.form')
-
-
  
-  
+  const formSubmit = document.querySelector('.form')
+  const cross = document.getElementById('button-cross')
+  const searchInput = document.getElementById("input")
   async function getData() {
   const section = document.querySelector('.section')
   var searchText = document.getElementById("input").value; 
@@ -30,9 +26,17 @@
   formSubmit.addEventListener('submit',(e) =>{
     getData()
     e.preventDefault()
+    
     })
 
+    searchInput.addEventListener('keypress', () => {
+      cross.classList.remove('button-cross-none')
+      cross.classList.add('button-cross')
+     }
+    )
 
-    
-    // const loupe = document.querySelector('.button')
-    // loupe.addEventListener('click', getData )     
+    cross.addEventListener('click', () => {
+      searchInput.value = ""
+      cross.classList.remove('button-cross')
+      cross.classList.add('button-cross-none')
+    })
